@@ -99,18 +99,22 @@
                                 </select>
                             </div>
 
+                            @php
+                                $informUser = \App\Models\InformUser::where("user_id", $dataTypeContent->id)->first();
+                            @endphp
+
                             {{-- Phone --}}
                             <div class="form-group">
                                 <label for="name">{{ __('Phone') }}</label>
                                 <input type="text" class="form-control" id="phone" name="phone" placeholder="{{ __('Phone') }}"
-                                       value="{{ old('name', $dataTypeContent->informUser->phone ?? '') }}">
+                                       value="{{ old('name', $informUser->phone ?? '') }}">
                             </div>
 
                             {{--  Address --}}
                             <div class="form-group">
                                 <label for="name">{{ __('Address') }}</label>
                                 <input type="text" class="form-control" id="address" name="address" placeholder="{{ __('Address') }}"
-                                       value="{{ old('name', $dataTypeContent->informUser->address ?? '') }}">
+                                       value="{{ old('name', $informUser->address ?? '') }}">
                             </div>
                         </div>
                     </div>
