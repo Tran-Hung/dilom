@@ -4,7 +4,7 @@
 -- https://tableplus.com/
 --
 -- Database: laravel_travel
--- Generation Time: 2021-03-28 21:44:11.3430
+-- Generation Time: 2021-04-04 22:09:44.7200
 -- -------------------------------------------------------------
 
 
@@ -23,8 +23,8 @@ CREATE TABLE `categories` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int unsigned DEFAULT NULL,
   `order` int NOT NULL DEFAULT '1',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -37,52 +37,52 @@ DROP TABLE IF EXISTS `data_rows`;
 CREATE TABLE `data_rows` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `data_type_id` int unsigned NOT NULL,
-  `field` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `field` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `required` tinyint(1) NOT NULL DEFAULT '0',
   `browse` tinyint(1) NOT NULL DEFAULT '1',
   `read` tinyint(1) NOT NULL DEFAULT '1',
   `edit` tinyint(1) NOT NULL DEFAULT '1',
   `add` tinyint(1) NOT NULL DEFAULT '1',
   `delete` tinyint(1) NOT NULL DEFAULT '1',
-  `details` text COLLATE utf8mb4_unicode_ci,
+  `details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `order` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `data_rows_data_type_id_foreign` (`data_type_id`),
   CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `data_types`;
 CREATE TABLE `data_types` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name_singular` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name_plural` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `model_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `policy_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `controller` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name_singular` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name_plural` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `model_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `policy_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `controller` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `generate_permissions` tinyint(1) NOT NULL DEFAULT '0',
   `server_side` tinyint NOT NULL DEFAULT '0',
-  `details` text COLLATE utf8mb4_unicode_ci,
+  `details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `data_types_name_unique` (`name`),
   UNIQUE KEY `data_types_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
@@ -92,8 +92,8 @@ DROP TABLE IF EXISTS `inform_users`;
 CREATE TABLE `inform_users` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
-  `phone` varchar(99) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(99) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(99) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(99) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -102,7 +102,7 @@ CREATE TABLE `inform_users` (
 DROP TABLE IF EXISTS `locations`;
 CREATE TABLE `locations` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(99) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(99) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `area_type` tinyint NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -113,26 +113,26 @@ DROP TABLE IF EXISTS `menu_items`;
 CREATE TABLE `menu_items` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `menu_id` int unsigned DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
-  `icon_class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
+  `icon_class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `parent_id` int DEFAULT NULL,
   `order` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `route` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `parameters` text COLLATE utf8mb4_unicode_ci,
+  `route` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parameters` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `menu_items_menu_id_foreign` (`menu_id`),
   CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `menus`;
 CREATE TABLE `menus` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -142,23 +142,23 @@ CREATE TABLE `menus` (
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `pages`;
 CREATE TABLE `pages` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci,
-  `body` text COLLATE utf8mb4_unicode_ci,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8mb4_unicode_ci,
-  `meta_keywords` text COLLATE utf8mb4_unicode_ci,
-  `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'INACTIVE',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `meta_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `status` enum('ACTIVE','INACTIVE') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'INACTIVE',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -167,8 +167,8 @@ CREATE TABLE `pages` (
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -187,28 +187,28 @@ CREATE TABLE `permission_role` (
 DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE `permissions` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `table_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `permissions_key_index` (`key`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int NOT NULL,
   `category_id` int DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seo_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seo_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `meta_keywords` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `status` enum('PUBLISHED','DRAFT','PENDING') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'DRAFT',
+  `status` enum('PUBLISHED','DRAFT','PENDING') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'DRAFT',
   `featured` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -219,8 +219,8 @@ CREATE TABLE `posts` (
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -230,13 +230,13 @@ CREATE TABLE `roles` (
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `details` text COLLATE utf8mb4_unicode_ci,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `details` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `order` int NOT NULL DEFAULT '1',
-  `group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `group` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `settings_key_unique` (`key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -244,20 +244,47 @@ CREATE TABLE `settings` (
 DROP TABLE IF EXISTS `translations`;
 CREATE TABLE `translations` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `table_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `column_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `table_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `column_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `foreign_key` int unsigned NOT NULL,
-  `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `locale` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-DROP TABLE IF EXISTS `travel`;
-CREATE TABLE `travel` (
+DROP TABLE IF EXISTS `travels`;
+CREATE TABLE `travels` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `location_id` int NOT NULL,
+  `name` varchar(99) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(199) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int NOT NULL,
+  `limit_user` int NOT NULL,
+  `check_in_at` date NOT NULL,
+  `check_out_at` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `travels_contents`;
+CREATE TABLE `travels_contents` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `travel_id` int NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DROP TABLE IF EXISTS `travels_images`;
+CREATE TABLE `travels_images` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `travel_id` int NOT NULL,
+  `image` varchar(199) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -278,13 +305,13 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `role_id` bigint unsigned DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `settings` text COLLATE utf8mb4_unicode_ci,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `settings` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -319,13 +346,13 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (19, 3, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 4),
 (20, 3, 'display_name', 'text', 'Display Name', 1, 1, 1, 1, 1, 1, NULL, 5),
 (21, 1, 'role_id', 'text', 'Role', 0, 1, 1, 1, 1, 1, '{}', 9),
-(22, 4, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
+(22, 4, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '{}', 1),
 (23, 4, 'parent_id', 'select_dropdown', 'Parent', 0, 0, 1, 1, 1, 1, '{\"default\":\"\",\"null\":\"\",\"options\":{\"\":\"-- None --\"},\"relationship\":{\"key\":\"id\",\"label\":\"name\"}}', 2),
-(24, 4, 'order', 'text', 'Order', 1, 1, 1, 1, 1, 1, '{\"default\":1}', 3),
-(25, 4, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, NULL, 4),
+(24, 4, 'order', 'rich_text_box', 'Order', 1, 1, 1, 1, 1, 1, '{\"default\":1}', 3),
+(25, 4, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 4),
 (26, 4, 'slug', 'text', 'Slug', 1, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"}}', 5),
-(27, 4, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 0, 0, 0, NULL, 6),
-(28, 4, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 7),
+(27, 4, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 0, 0, 0, '{}', 6),
+(28, 4, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
 (29, 5, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
 (30, 5, 'author_id', 'text', 'Author', 1, 0, 1, 1, 0, 1, NULL, 2),
 (31, 5, 'category_id', 'text', 'Category', 1, 0, 1, 1, 1, 0, NULL, 3),
@@ -341,30 +368,41 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (41, 5, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 13),
 (42, 5, 'seo_title', 'text', 'SEO Title', 0, 1, 1, 1, 1, 1, NULL, 14),
 (43, 5, 'featured', 'checkbox', 'Featured', 1, 1, 1, 1, 1, 1, NULL, 15),
-(44, 6, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
-(45, 6, 'author_id', 'text', 'Author', 1, 0, 0, 0, 0, 0, NULL, 2),
-(46, 6, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, NULL, 3),
-(47, 6, 'excerpt', 'text_area', 'Excerpt', 1, 0, 1, 1, 1, 1, NULL, 4),
-(48, 6, 'body', 'rich_text_box', 'Body', 1, 0, 1, 1, 1, 1, NULL, 5),
+(44, 6, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '{}', 1),
+(45, 6, 'author_id', 'text', 'Author', 1, 0, 0, 0, 0, 0, '{}', 2),
+(46, 6, 'title', 'text', 'Title', 1, 1, 1, 1, 1, 1, '{}', 3),
+(47, 6, 'excerpt', 'text_area', 'Excerpt', 0, 0, 1, 1, 1, 1, '{}', 4),
+(48, 6, 'body', 'rich_text_box', 'Body', 0, 0, 1, 1, 1, 1, '{}', 5),
 (49, 6, 'slug', 'text', 'Slug', 1, 0, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"title\"},\"validation\":{\"rule\":\"unique:pages,slug\"}}', 6),
-(50, 6, 'meta_description', 'text', 'Meta Description', 1, 0, 1, 1, 1, 1, NULL, 7),
-(51, 6, 'meta_keywords', 'text', 'Meta Keywords', 1, 0, 1, 1, 1, 1, NULL, 8),
+(50, 6, 'meta_description', 'text', 'Meta Description', 0, 0, 1, 1, 1, 1, '{}', 7),
+(51, 6, 'meta_keywords', 'text', 'Meta Keywords', 0, 0, 1, 1, 1, 1, '{}', 8),
 (52, 6, 'status', 'select_dropdown', 'Status', 1, 1, 1, 1, 1, 1, '{\"default\":\"INACTIVE\",\"options\":{\"INACTIVE\":\"INACTIVE\",\"ACTIVE\":\"ACTIVE\"}}', 9),
-(53, 6, 'created_at', 'timestamp', 'Created At', 1, 1, 1, 0, 0, 0, NULL, 10),
-(54, 6, 'updated_at', 'timestamp', 'Updated At', 1, 0, 0, 0, 0, 0, NULL, 11),
-(55, 6, 'image', 'image', 'Page Image', 0, 1, 1, 1, 1, 1, NULL, 12),
-(56, 1, 'email_verified_at', 'timestamp', 'Email Verified At', 0, 1, 1, 1, 1, 1, '{}', 6);
+(53, 6, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 10),
+(54, 6, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 1, 1, 0, '{}', 11),
+(55, 6, 'image', 'image', 'Page Image', 0, 1, 1, 1, 1, 1, '{}', 12),
+(56, 1, 'email_verified_at', 'timestamp', 'Email Verified At', 0, 1, 1, 1, 1, 1, '{}', 6),
+(57, 7, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(58, 7, 'location_id', 'text', 'Location Id', 1, 0, 1, 1, 1, 1, '{}', 2),
+(59, 7, 'limit_user', 'text', 'Limit User', 1, 1, 1, 1, 1, 1, '{}', 6),
+(60, 7, 'check_in_at', 'timestamp', 'Check In At', 1, 1, 1, 1, 1, 1, '{}', 7),
+(61, 7, 'check_out_at', 'timestamp', 'Check Out At', 1, 1, 1, 1, 1, 1, '{}', 8),
+(62, 7, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 1, '{}', 9),
+(63, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 10),
+(64, 7, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 3),
+(65, 7, 'price', 'number', 'Price', 1, 1, 1, 1, 1, 1, '{}', 5),
+(67, 7, 'image', 'image', 'Image', 1, 1, 1, 1, 1, 1, '{}', 4);
 
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'App\\Http\\Controllers\\UserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-03-28 12:49:09', '2021-03-28 14:23:49'),
+(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'App\\Http\\Controllers\\Voyager\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-03-28 12:49:09', '2021-04-03 01:47:26'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
-(4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
+(4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-03-28 12:49:09', '2021-04-03 04:47:47'),
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
-(6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2021-03-28 12:49:09', '2021-03-28 12:49:09');
+(6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-03-28 12:49:09', '2021-04-04 03:09:00'),
+(7, 'travels', 'travels', 'Travel', 'Travel', 'voyager-list-add', 'App\\Models\\Travel', NULL, 'App\\Http\\Controllers\\Voyager\\VoyagerTravelController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-04-03 01:51:31', '2021-04-04 11:43:44');
 
 INSERT INTO `inform_users` (`id`, `user_id`, `phone`, `address`, `created_at`, `updated_at`) VALUES
-(1, 4, '238.603.365', '880 Mitchell PlainsLake Percivalport, LA 20182', '2021-03-28 14:30:19', '2021-03-28 14:30:34'),
+(1, 4, '238.603.365', '880 Mitchell PlainsLake Percivalport, LA 20182', '2021-03-28 14:30:19', '2021-04-03 04:58:26'),
 (2, 5, '+1-531-990-5305', '73647 Esteban Port Suite 638\nNew Wilhelmine, NH 78170-7998', '2021-03-28 14:30:19', '2021-03-28 14:30:19'),
 (3, 6, '797-395-1664', '733 Ally Route\nWest Tanya, OR 26021-1206', '2021-03-28 14:30:19', '2021-03-28 14:30:19'),
 (4, 7, '+1 (450) 214-6934', '76339 Rodrigo Mountain\nLangoshton, ME 54220', '2021-03-28 14:30:19', '2021-03-28 14:30:19'),
@@ -464,13 +502,13 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2021-03-28 12:49:09', '2021-03-28 12:49:09', 'voyager.categories.index', NULL),
 (12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2021-03-28 12:49:09', '2021-03-28 12:49:09', 'voyager.posts.index', NULL),
 (13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2021-03-28 12:49:09', '2021-03-28 12:49:09', 'voyager.pages.index', NULL),
-(14, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 13, '2021-03-28 12:49:10', '2021-03-28 12:49:10', 'voyager.hooks', NULL);
+(14, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 13, '2021-03-28 12:49:10', '2021-03-28 12:49:10', 'voyager.hooks', NULL),
+(15, 1, 'Travel', '', '_self', NULL, NULL, NULL, 15, '2021-04-03 01:51:31', '2021-04-03 01:51:31', 'voyager.travels.index', NULL);
 
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', '2021-03-28 12:49:09', '2021-03-28 12:49:09');
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(29, '2021_03_28_104655_create_travel_table', 2),
 (60, '2014_10_12_000000_create_users_table', 3),
 (61, '2014_10_12_100000_create_password_resets_table', 3),
 (62, '2016_01_01_000000_add_voyager_user_fields', 3),
@@ -499,7 +537,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (85, '2018_03_16_000000_make_settings_value_nullable', 3),
 (86, '2019_08_19_000000_create_failed_jobs_table', 3),
 (87, '2021_03_27_141512_create_inform_users_table', 3),
-(89, '2021_03_28_105316_create_locations_table', 4);
+(89, '2021_03_28_105316_create_locations_table', 4),
+(98, '2021_03_28_134210_create_travel_table', 5);
 
 INSERT INTO `pages` (`id`, `author_id`, `title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`) VALUES
 (1, 0, 'Hello World', 'Hang the jib grog grog blossom grapple dance the hempen jig gangway pressgang bilge rat to go on account lugger. Nelsons folly gabion line draught scallywag fire ship gaff fluke fathom case shot. Sea Legs bilge rat sloop matey gabion long clothes run a shot across the bow Gold Road cog league.', '<p>Hello World. Scallywag grog swab Cat o\'nine tails scuttle rigging hardtack cable nipper Yellow Jack. Handsomely spirits knave lad killick landlubber or just lubber deadlights chantey pinnace crack Jennys tea cup. Provost long clothes black spot Yellow Jack bilged on her anchor league lateen sail case shot lee tackle.</p>\n<p>Ballast spirits fluke topmast me quarterdeck schooner landlubber or just lubber gabion belaying pin. Pinnace stern galleon starboard warp carouser to go on account dance the hempen jig jolly boat measured fer yer chains. Man-of-war fire in the hole nipperkin handsomely doubloon barkadeer Brethren of the Coast gibbet driver squiffy.</p>', 'pages/page1.jpg', 'hello-world', 'Yar Meta Description', 'Keyword1, Keyword2', 'ACTIVE', '2021-03-28 12:49:09', '2021-03-28 12:49:09');
@@ -544,7 +583,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (37, 1),
 (38, 1),
 (39, 1),
-(40, 1);
+(40, 1),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1);
 
 INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`) VALUES
 (1, 'browse_admin', NULL, '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
@@ -587,7 +631,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (38, 'edit_pages', 'pages', '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
 (39, 'add_pages', 'pages', '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
 (40, 'delete_pages', 'pages', '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
-(41, 'browse_hooks', NULL, '2021-03-28 12:49:10', '2021-03-28 12:49:10');
+(41, 'browse_hooks', NULL, '2021-03-28 12:49:10', '2021-03-28 12:49:10'),
+(42, 'browse_travels', 'travels', '2021-04-03 01:51:31', '2021-04-03 01:51:31'),
+(43, 'read_travels', 'travels', '2021-04-03 01:51:31', '2021-04-03 01:51:31'),
+(44, 'edit_travels', 'travels', '2021-04-03 01:51:31', '2021-04-03 01:51:31'),
+(45, 'add_travels', 'travels', '2021-04-03 01:51:31', '2021-04-03 01:51:31'),
+(46, 'delete_travels', 'travels', '2021-04-03 01:51:31', '2021-04-03 01:51:31');
 
 INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `excerpt`, `body`, `image`, `slug`, `meta_description`, `meta_keywords`, `status`, `featured`, `created_at`, `updated_at`) VALUES
 (1, 0, NULL, 'Lorem Ipsum Post', NULL, 'This is the excerpt for the Lorem Ipsum Post', '<p>This is the body of the lorem ipsum post</p>', 'posts/post1.jpg', 'lorem-ipsum-post', 'This is the meta description', 'keyword1, keyword2, keyword3', 'PUBLISHED', 0, '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
@@ -643,10 +692,30 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (29, 'menu_items', 'title', 7, 'pt', 'Base de dados', '2021-03-28 12:49:09', '2021-03-28 12:49:09'),
 (30, 'menu_items', 'title', 10, 'pt', 'Configurações', '2021-03-28 12:49:09', '2021-03-28 12:49:09');
 
+INSERT INTO `travels` (`id`, `location_id`, `name`, `image`, `price`, `limit_user`, `check_in_at`, `check_out_at`, `created_at`, `updated_at`) VALUES
+(1, 57, 'Prof.', 'travels/April2021/z2398299688503_ce9e07e71e0ec5751045837b07b62a0a.jpg', 395645, 41, '2021-04-05', '2021-04-08', '2021-04-04 05:35:39', '2021-04-04 11:26:01'),
+(4, 27, 'Mrs.', 'default.png', 541755, 36, '2021-04-07', '2021-04-11', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(5, 14, 'Mr.', 'default.png', 510995, 32, '2021-04-06', '2021-04-14', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(6, 31, 'Ms.', 'default.png', 191997, 12, '2021-04-06', '2021-04-12', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(7, 41, 'Mr.', 'default.png', 519824, 28, '2021-04-06', '2021-04-10', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(8, 4, 'Prof.', 'default.png', 383183, 28, '2021-04-05', '2021-04-13', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(9, 24, 'Mr.', 'default.png', 280533, 27, '2021-04-08', '2021-04-11', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(10, 38, 'Ms.', 'default.png', 421927, 25, '2021-04-08', '2021-04-10', '2021-04-04 05:35:39', '2021-04-04 05:35:39');
+
+INSERT INTO `travels_contents` (`id`, `travel_id`, `content`, `created_at`, `updated_at`) VALUES
+(1, 1, '<p>Et et consequatur iste nemo quos veritatis. Provident tempora id velit ut modi. Rem qui doloribus aperiam optio. Recusandae recusandae praesentium quos nemo.</p>', '2021-04-04 05:35:39', '2021-04-04 11:26:01'),
+(4, 4, 'Officiis perferendis quos ratione natus officiis sed. Error sit voluptatem iusto est quibusdam dolorem.', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(5, 5, 'Et temporibus eum doloribus occaecati vero odit maiores commodi. Doloremque aspernatur dicta quia id. Dolor ullam dolores ipsa sed accusamus sint.', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(6, 6, 'Est vel non consequatur doloremque id. Aut culpa aut est harum aliquid excepturi repudiandae. Voluptatem sapiente quas corporis dolor corporis aut doloribus.', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(7, 7, 'Veritatis quo corrupti quia facilis velit. Voluptates qui velit doloremque earum quisquam. Rerum non maxime rerum necessitatibus illum. Vel quibusdam voluptatem et.', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(8, 8, 'Omnis ad culpa magni commodi odio qui. Et magni aspernatur non repudiandae ut quia deleniti. Illum architecto quia sed ratione quia nostrum.', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(9, 9, 'Rerum voluptatem delectus et. Aliquid aut dolore eligendi perspiciatis. Non hic sed eum dolor. Omnis iusto et non voluptatum. Et consequatur dolore enim quaerat libero ut consequatur.', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(10, 10, 'Autem at ex placeat labore dolorem expedita perferendis. Odio impedit cumque voluptate quis. Quae molestias accusantium fuga aut. Ea repellendus expedita est error.', '2021-04-04 05:35:39', '2021-04-04 05:35:39'),
+(11, 13, '<p>123213</p>', '2021-04-04 11:24:50', '2021-04-04 11:29:20');
+
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Tet', 'johnbuyer@gmail.com', 'users/default.png', NULL, '$2y$10$EytwK2F1fJha4XnWQhWOKuJx7SSOHQc3UyIhN96pL0HQ44AUzs2xC', 'vvA0NpnksGNLHKPCC38wc03yhTMGMqt5gxVmcTZEw6j1olyyBCHMW6areDQv', '{\"locale\":\"en\"}', '2021-03-28 12:49:09', '2021-03-28 14:25:32'),
-(4, 2, 'Ms. Stacy Kiehn', 'jbeer@example.net', 'users/default.png', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Xp7UijO7GV', '{\"locale\":\"en\"}', '2021-03-28 14:30:19', '2021-03-28 14:30:27'),
-(5, 2, 'Landen Kassulke', 'gusikowski.roxane@example.net', 'users/default.png', '2021-03-28 14:30:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'r82Fb7rTwL', NULL, '2021-03-28 14:30:19', '2021-03-28 14:30:19'),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$XlpKupU3gVHdWd3JM2a2oeHyOLyIOBY79pUjcVwZfcDFOXBudpIDW', 'vvA0NpnksGNLHKPCC38wc03yhTMGMqt5gxVmcTZEw6j1olyyBCHMW6areDQv', '{\"locale\":\"en\"}', '2021-03-28 12:49:09', '2021-04-03 01:38:34'),
+(4, 2, 'Ms. Stacy Kiehn', 'jbeer@example.net', 'users/April2021/M5pwHfwdQ9U9XeWT1ZvD.jpg', NULL, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Xp7UijO7GV', '{\"locale\":\"en\"}', '2021-03-28 14:30:19', '2021-04-03 04:58:26'),
 (6, 2, 'Prof. Brendan Mann MD', 'murphy.dubuque@example.com', 'users/default.png', '2021-03-28 14:30:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'VTbtFYNMh4', NULL, '2021-03-28 14:30:19', '2021-03-28 14:30:19'),
 (7, 2, 'Dr. Boyd Kiehn IV', 'qrosenbaum@example.com', 'users/default.png', '2021-03-28 14:30:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'KREzg7BYbT', NULL, '2021-03-28 14:30:19', '2021-03-28 14:30:19'),
 (8, 2, 'Darrell Douglas', 'reinger.meagan@example.org', 'users/default.png', '2021-03-28 14:30:19', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 't1w8eH3YUP', NULL, '2021-03-28 14:30:19', '2021-03-28 14:30:19'),
