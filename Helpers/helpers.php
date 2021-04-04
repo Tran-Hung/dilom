@@ -41,3 +41,18 @@ if (!function_exists('replace_char')){
         return str_replace($search, $replace, $value);
     }
 }
+
+/**
+ * Get image
+ *
+ */
+if (!function_exists('get_image_from_disk')){
+    function get_image_from_disk($path, $default = "images/landing-private-airlines-01-570x370.jpg")
+    {
+        if (\Illuminate\Support\Facades\Storage::disk('public')->exists($path)) {
+            return asset('storage/'. $path);
+        }
+
+        return $default;
+    }
+}

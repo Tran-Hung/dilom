@@ -39,4 +39,12 @@ class Travel extends Model
         return $this->hasOne(TravelContent::class);
     }
 
+    /**
+     * Belong to location
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function location() {
+        return $this->belongsTo(Location::class);
+    }
 }

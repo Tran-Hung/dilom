@@ -430,7 +430,6 @@ $document.ready(function () {
 		}
 	}
 
-
 	/**
 	 * attachFormValidator
 	 * @description  attach form validation to elements
