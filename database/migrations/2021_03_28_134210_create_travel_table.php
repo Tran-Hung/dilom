@@ -13,31 +13,31 @@ class CreateTravelTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('travels');
+        Schema::dropIfExists('travels_images');
+        Schema::dropIfExists('travels_contents');
+
         Schema::create('travels', function (Blueprint $table) {
             $table->id();
             $table->integer('location_id');
+            $table->string('name', 99);
+            $table->string('image', 199);
+            $table->integer('price');
             $table->integer('limit_user');
-            $table->timestamp('check_in_at');
-            $table->timestamp('check_out_at');
+            $table->date('check_in_at');
+            $table->date('check_out_at');
             $table->timestamps();
         });
         Schema::create('travels_images', function (Blueprint $table) {
             $table->id();
             $table->integer('travel_id');
-            $table->string('url', 199);
+            $table->string('image', 199);
             $table->timestamps();
         });
         Schema::create('travels_contents', function (Blueprint $table) {
             $table->id();
             $table->integer('travel_id');
-            $table->text('content');
-            $table->timestamps();
-        });
-        Schema::create('travels_prices', function (Blueprint $table) {
-            $table->id();
-            $table->integer('travel_id');
-            $table->text('price');
-            $table->text('price_type');
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }

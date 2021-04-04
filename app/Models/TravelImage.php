@@ -9,4 +9,5 @@ class TravelImage extends Model
 {
     use HasFactory;
     protected $table = "travels_images";
+    protected $guarded = [];
 }

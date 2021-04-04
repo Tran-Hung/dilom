@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.5",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "tcg/voyager": "^1.4"
@@ -34,7 +35,11 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "config/constants.php",
+            "Helpers/helpers.php"
+        ]
     },
     "scripts": {
         "post-autoload-dump": [

@@ -9,4 +9,5 @@ class TravelContent extends Model
 {
     use HasFactory;
     protected $table = "travels_contents";
+    protected $guarded = [];
 }
