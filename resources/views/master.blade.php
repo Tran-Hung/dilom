@@ -101,9 +101,9 @@
                         <div class="rd-navbar-nav-wrap">
                             <!-- RD Navbar Nav-->
                             <ul class="rd-navbar-nav">
-                                <li class="active"><a href="{!! route("index") !!}"> @lang('Home') </a>
+                                <li class="{!! request()->is('/')?'active': '' !!}"><a href="{!! route("index") !!}"> @lang('Home') </a>
                                 </li>
-                                <li><a href="{!! route("travels") !!}"> @lang('Tours') </a></li>
+                                <li class="{!! request()->is('travels*')?'active': '' !!}"><a href="{!! route("travels") !!}"> @lang('Tours') </a></li>
 {{--                                <li><a href="#">Contacts</a>--}}
 {{--                                </li>--}}
 {{--                                <li><a href="#">Typography</a>--}}
