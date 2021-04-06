@@ -12,9 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [\App\Http\Controllers\HomeController::class, "index"]);
-
+// Admin
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+Route::get('/', [\App\Http\Controllers\HomeController::class, "index"])->name("index");
+
+Route::get('/travels/{id}', [\App\Http\Controllers\TravelController::class, "show"])->name('travels.show');
+Route::get('/travels', [\App\Http\Controllers\TravelController::class, "index"])->name('travels');

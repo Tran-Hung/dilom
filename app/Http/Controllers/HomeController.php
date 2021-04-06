@@ -16,14 +16,14 @@ class HomeController extends Controller
         $take = 6;
 
         $hotTravels = Travel::take($take)->orderBy('limit_user', 'desc')->get();
-        $lastestTravels = Travel::take($take)->orderBy('id', 'desc')->get();
+        $latestTravels = Travel::take($take)->orderBy('id', 'desc')->get();
         $areaTravels = Travel::whereHas('location', function ($q) {
-                $q->where('location_id', AREA_SOUTH);
+                $q->where('area_type', AREA_SOUTH);
             })
             ->take($take)
             ->orderBy('id', 'desc')
             ->get();
 
-        return view('index', compact('hotTravels', 'lastestTravels', 'areaTravels'));
+        return view('index', compact('hotTravels', 'latestTravels', 'areaTravels'));
     }
 }

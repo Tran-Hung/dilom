@@ -1,0 +1,29 @@
+.abs-top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+span.ribbon {
+    border-radius: 30px;
+    font-size: 17px;
+    color: white;
+}
+
+span.ribbon.bg-1{
+    background: #841111;
+}
+span.ribbon.bg-2{
+    background: #4f7584;
+}
+span.ribbon.bg-3{
+    background: #d49500;
+}
+
+.text-money {
+    color: #ffa900;
+}
+
+#btnBookNow:hover {
+    background: #ffa900;
+    color: #fff;
+}

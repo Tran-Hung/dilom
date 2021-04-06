@@ -374,7 +374,6 @@ $document.ready(function () {
 		});
 	}
 
-
 	/**
 	 * Parallax text
 	 * @description  function for parallax text
@@ -1410,7 +1409,7 @@ $document.ready(function () {
 
 			options['format'] = 'dddd DD MMMM YYYY - HH:mm';
 			if ($dateTimePicker.attr("data-time-picker") == "date") {
-				options['format'] = 'MM-DD-YYYY';
+				options['format'] = 'YYYY-MM-DD';
 				options['minDate'] = new Date();
 			} else if ($dateTimePicker.attr("data-time-picker") == "time") {
 				options['format'] = 'HH:mm';

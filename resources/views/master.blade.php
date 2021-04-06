@@ -7,16 +7,22 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{!! asset('images/favicon.ico') !!}" type="image/x-icon">
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald:200,400%7CLato:300,400,300italic,700%7CMontserrat:900">
     <link rel="stylesheet" href="{!! asset('css/bootstrap.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/fonts.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/my-style.css') !!}">
+
     <!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;">
         <a href="http://windows.microsoft.com/en-US/internet-explorer/">
-        <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.">
+        <img src="{!! asset('images/ie8-panel/warning_bar_0000_us.jpg') !!}"
+         border="0"
+         height="42"
+         width="820"
+         alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.">
         </a>
     </div>
     <script src="{!! asset('js/html5shiv.min.js') !!}"> </script>
@@ -89,16 +95,15 @@
                         <!-- RD Navbar Toggle-->
                         <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                         <!-- RD Navbar Brand-->
-                        <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img class="logo-default" src="images/logo-default-208x46.png" alt="" width="208" height="46"/><img class="logo-inverse" src="images/logo-inverse-208x46.png" alt="" width="208" height="46"/></a></div>
+                        <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img class="logo-default" src="{!! asset('images/logo-default-208x46.png') !!}" alt="" width="208" height="46"/><img class="logo-inverse" src="images/logo-inverse-208x46.png" alt="" width="208" height="46"/></a></div>
                     </div>
                     <div class="rd-navbar-aside-center">
                         <div class="rd-navbar-nav-wrap">
                             <!-- RD Navbar Nav-->
                             <ul class="rd-navbar-nav">
-                                <li class="active"><a href="#"> @lang('Home') </a>
+                                <li class="active"><a href="{!! route("index") !!}"> @lang('Home') </a>
                                 </li>
-{{--                                <li><a href="#">About Us</a>--}}
-{{--                                </li>--}}
+                                <li><a href="{!! route("travels") !!}"> @lang('Tours') </a></li>
 {{--                                <li><a href="#">Contacts</a>--}}
 {{--                                </li>--}}
 {{--                                <li><a href="#">Typography</a>--}}
@@ -120,7 +125,10 @@
     <footer class="section page-footer page-footer-minimal novi-background bg-cover text-center bg-gray-darker">
         <div class="container container-wide">
             <div class="row row-fix justify-content-sm-center align-items-md-center row-30">
-                <div class="col-md-10 col-lg-7 col-xl-4 text-xl-left"><a href="index.html"><img class="inverse-logo" src="images/logo-inverse-208x46.png" alt="" width="208" height="46"/></a></div>
+                <div class="col-md-10 col-lg-7 col-xl-4 text-xl-left">
+                    <a href="index.html">
+                        <img class="inverse-logo"
+                             src="{!! asset('images/logo-inverse-208x46.png') !!}" alt="" width="208" height="46"/></a></div>
                 <div class="col-md-10 col-lg-7 col-xl-4">
                     <p class="right">&#169;
                         &nbsp;<span class="copyright-year"></span>
@@ -148,6 +156,8 @@
 <!-- Javascript-->
 <script src="{!! asset('js/core.min.js') !!}"></script>
 <script src="{!! asset('js/script.js') !!}"></script>
+
+@yield("scripts")
 <!-- coded by barber-->
 </body>
 </html>

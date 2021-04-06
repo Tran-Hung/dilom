@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,13 @@ class Travel extends Model
     }
     public function setPriceAttribute($value) {
         return replace_char(',', '', $value);
+    }
+    public function getRangeDaysAttribute() {
+        $range = Carbon::parse($this->check_in_at)->diffInDays(Carbon::parse($this->check_out_at));
+        return $range ." days";
+    }
+    public function getRangeFormatAttribute() {
+        return $this->check_in_at ." ~ ". $this->check_out_at;
     }
 
     /**
