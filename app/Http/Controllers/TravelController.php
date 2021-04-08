@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class TravelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['booking']);
+    }
+
     /**
      * View page find travel
      */
@@ -63,5 +68,16 @@ class TravelController extends Controller
             ->get();
 
         return view('travel.show', compact('travel', 'relatedTravels', 'recommendTravels'));
+    }
+
+    /**
+     * Show booking page
+     *
+     * @param $id
+     */
+    public function booking($id) {
+        $travel = Travel::findOrFail($id);
+
+        return view('travel.booking', compact('travel'));
     }
 }

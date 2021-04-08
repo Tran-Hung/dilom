@@ -17,12 +17,12 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-// User
-Auth::routes();
-
+Auth::routes([
+    "register" => false
+]);
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, "index"])->name("index");
 
+Route::get('/travels/booking/{id}', [\App\Http\Controllers\TravelController::class, "booking"])->name('travels.booking');
 Route::get('/travels/{id}', [\App\Http\Controllers\TravelController::class, "show"])->name('travels.show');
 Route::get('/travels', [\App\Http\Controllers\TravelController::class, "index"])->name('travels');
-

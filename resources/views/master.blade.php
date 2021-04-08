@@ -104,15 +104,30 @@
                                 <li class="{!! request()->is('/')?'active': '' !!}"><a href="{!! route("index") !!}"> @lang('Home') </a>
                                 </li>
                                 <li class="{!! request()->is('travels*')?'active': '' !!}"><a href="{!! route("travels") !!}"> @lang('Tours') </a></li>
-{{--                                <li><a href="#">Contacts</a>--}}
-{{--                                </li>--}}
-{{--                                <li><a href="#">Typography</a>--}}
-{{--                                </li>--}}
                             </ul>
                         </div>
                     </div>
                     <div class="rd-navbar-aside-right">
-                        <a class="button button-sm button-secondary button-nina" href="#">@lang('Book tour')</a>
+                        @if(Auth::check())
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {!! Auth::user()->name !!}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#"> @lang("Orders History") </a>
+                                    <a id="btnLogout" class="dropdown-item" href="#"> @lang("Logout") </a>
+                                </div>
+
+                                <form id="logout-form"
+                                      action="{!! route('logout') !!}"
+                                      method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        @else
+                            <a href="{!! route('login') !!}">  @lang("Login") </a>
+                        @endif
                     </div>
                 </div>
             </nav>
@@ -157,6 +172,13 @@
 <script src="{!! asset('js/core.min.js') !!}"></script>
 <script src="{!! asset('js/script.js') !!}"></script>
 
+<script>
+    $("#btnLogout").on("click", function (e) {
+        e.preventDefault();
+
+        $("#logout-form").submit();
+    });
+</script>
 @yield("scripts")
 <!-- coded by barber-->
 </body>

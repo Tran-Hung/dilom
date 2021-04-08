@@ -10,7 +10,9 @@
                         height="370"/>
                 </figure>
                 <div class="event-default-caption">
-                    <a class="button button-xs button-secondary button-nina" href="#"> Watch </a>
+                    <a class="button button-xs button-secondary button-nina" href="{!! route("travels.show", [
+                    "id" => $travel->id
+                ]) !!}"> @lang("Watch") </a>
                 </div>
                 <div class="abs-top-left">
                     <div class="d-block d-block mb-1">
