@@ -51,7 +51,17 @@ class TravelController extends Controller
      */
     public function show($id) {
         $travel = Travel::findOrFail($id);
+        $relatedTravels = Travel::where('location_id', $travel->location_id)
+            ->where('id', '!=', $travel->id)
+            ->take(6)
+            ->get();
 
-        return view('travel.show', compact('travel'));
+        $recommendTravels = Travel::
+            orderBy("id", "desc")
+            ->orderBy("limit_user", "desc")
+            ->take(6)
+            ->get();
+
+        return view('travel.show', compact('travel', 'relatedTravels', 'recommendTravels'));
     }
 }

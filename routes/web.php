@@ -17,8 +17,12 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+// User
+Auth::routes();
+
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, "index"])->name("index");
 
 Route::get('/travels/{id}', [\App\Http\Controllers\TravelController::class, "show"])->name('travels.show');
 Route::get('/travels', [\App\Http\Controllers\TravelController::class, "index"])->name('travels');
+
