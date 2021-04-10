@@ -35,6 +35,22 @@
     "Name": "Name",
     "Note": "Note",
     "Submit": "Submit",
-    "Your note": "Your note"
+    "Your note": "Your note",
+    "Quality": "Quality",
+    "Amount": "Amount",
+    "Pay with cash": "Pay with cash",
+    "Pay with card": "Pay with card",
+    "Something went wrong": "Something went wrong",
+    "Close": "Close",
+    "Orders": "Orders",
+    "Order History": "Order History",
+    "Check your order history here": "Check your order history here",
+    "Last tour": "Last tour",
+    "ID": "ID",
+    "Tour": "Tour",
+    "Order time": "Order time",
+    "Action": "Action",
+    "Delete": "Delete",
+    "Show": "Show"
 }
 

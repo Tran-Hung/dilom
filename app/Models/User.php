@@ -17,4 +17,13 @@ class User extends \TCG\Voyager\Models\User
     public function informUser() {
         return $this->hasOne(InformUser::class, "user_id", "id");
     }
+
+    /**
+     * Get all orders
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
 }

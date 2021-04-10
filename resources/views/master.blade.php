@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{!! asset('css/fonts.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/my-style.css') !!}">
 
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
     <!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;">
         <a href="http://windows.microsoft.com/en-US/internet-explorer/">
@@ -104,6 +106,7 @@
                                 <li class="{!! request()->is('/')?'active': '' !!}"><a href="{!! route("index") !!}"> @lang('Home') </a>
                                 </li>
                                 <li class="{!! request()->is('travels*')?'active': '' !!}"><a href="{!! route("travels") !!}"> @lang('Tours') </a></li>
+                                <li class="{!! request()->is('orders*')?'active': '' !!}"><a href="{!! route("orders") !!}"> @lang('Orders') </a></li>
                             </ul>
                         </div>
                     </div>
@@ -114,7 +117,7 @@
                                     {!! Auth::user()->name !!}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#"> @lang("Orders History") </a>
+                                    <a class="dropdown-item" href="{!! route('orders') !!}"> @lang("Orders History") </a>
                                     <a id="btnLogout" class="dropdown-item" href="#"> @lang("Logout") </a>
                                 </div>
 
@@ -172,6 +175,11 @@
 <script src="{!! asset('js/core.min.js') !!}"></script>
 <script src="{!! asset('js/script.js') !!}"></script>
 
+<!-- Plugin -->
+<script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 <script>
     $("#btnLogout").on("click", function (e) {
         e.preventDefault();

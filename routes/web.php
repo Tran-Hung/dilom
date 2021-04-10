@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +22,25 @@ Auth::routes([
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, "index"])->name("index");
 
-Route::get('/travels/booking/{id}', [\App\Http\Controllers\TravelController::class, "booking"])->name('travels.booking');
-Route::get('/travels/{id}', [\App\Http\Controllers\TravelController::class, "show"])->name('travels.show');
-Route::get('/travels', [\App\Http\Controllers\TravelController::class, "index"])->name('travels');
+// Travels
+Route::group([
+    'prefix' => 'travels',
+], function () {
+    Route::post('/', [\App\Http\Controllers\TravelController::class, "store"])->name('travels.store');
+
+    Route::get('booking/{id}', [\App\Http\Controllers\TravelController::class, "booking"])->name('travels.booking');
+    Route::get('{id}', [\App\Http\Controllers\TravelController::class, "show"])->name('travels.show');
+    Route::get('/', [\App\Http\Controllers\TravelController::class, "index"])->name('travels');
+
+});
+
+// Orders
+Route::group([
+    'prefix' => 'orders',
+    'middleware' => 'auth',
+], function () {
+    Route::get('/data', [\App\Http\Controllers\OrderController::class, "ordersData"])->name('orders.data');
+
+    Route::get('{id}', [\App\Http\Controllers\OrderController::class, "show"])->name('orders.show');
+    Route::get('/', [\App\Http\Controllers\OrderController::class, "index"])->name('orders');
+});
