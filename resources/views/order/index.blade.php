@@ -11,7 +11,7 @@
                 <p class="breadcrumbs-custom-subtitle mb-3"> @lang("Check your order history here") </p>
                 <p class="heading-1 breadcrumbs-custom-title"> @lang("Order History") </p>
                 <ul class="breadcrumbs-custom-path">
-                    @if(isset(Auth::user()->orders))
+                    @if(isset(Auth::user()->orders) && count(Auth::user()->orders))
                         <li> @lang("Last tour") </li>
                         <li> #{!! Auth::user()->orders->first()->id !!} </li>
                         <li> {!! Auth::user()->orders->first()->travel->location->name !!} </li>

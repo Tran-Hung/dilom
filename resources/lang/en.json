@@ -51,6 +51,16 @@
     "Order time": "Order time",
     "Action": "Action",
     "Delete": "Delete",
-    "Show": "Show"
+    "Show": "Show",
+    "Order Detail": "Order Detail",
+    "($) Price": "($) Price",
+    "There is no note for this order": "There is no note for this order",
+    "Tour name": "Tour name",
+    "Tour information": "Tour information",
+    "Time": "Time",
+    "Checkout": "Checkout",
+    "Payment method": "Payment method",
+    "Tour booking is successful": "Tour booking is successful",
+    "Congratulation": "Congratulation"
 }
 

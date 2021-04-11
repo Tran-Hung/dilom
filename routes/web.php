@@ -44,3 +44,9 @@ Route::group([
     Route::get('{id}', [\App\Http\Controllers\OrderController::class, "show"])->name('orders.show');
     Route::get('/', [\App\Http\Controllers\OrderController::class, "index"])->name('orders');
 });
+
+// Localization
+Route::get('locale/{locale}', function ($locale) {
+    \Illuminate\Support\Facades\Session::put('locale', $locale);
+    return redirect()->back();
+})->name('locale');

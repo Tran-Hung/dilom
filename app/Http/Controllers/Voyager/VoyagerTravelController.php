@@ -128,9 +128,7 @@ class VoyagerTravelController extends BaseVoyagerUserController
 
         $img = Image::make($img->getRealPath());
         $img->orientate()
-            ->fit(570, 415, function ($constraint) {
-                $constraint->upsize();
-            })
+            ->resize(720, 459)
             ->stream($imgExtension, 75)->detach();
 
         $path = "travels/". Carbon::now()->format('FY') . "/" . $imgName;

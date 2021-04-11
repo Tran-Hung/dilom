@@ -97,7 +97,7 @@
                         <!-- RD Navbar Toggle-->
                         <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                         <!-- RD Navbar Brand-->
-                        <div class="rd-navbar-brand"><a class="brand-name" href="index.html"><img class="logo-default" src="{!! asset('images/logo-default-208x46.png') !!}" alt="" width="208" height="46"/><img class="logo-inverse" src="images/logo-inverse-208x46.png" alt="" width="208" height="46"/></a></div>
+                        <div class="rd-navbar-brand"><a class="brand-name" href="{!! route("index") !!}"><img class="logo-default" src="{!! asset('images/logo-default-208x46.png') !!}" alt="" width="208" height="46"/><img class="logo-inverse" src="images/logo-inverse-208x46.png" alt="" width="208" height="46"/></a></div>
                     </div>
                     <div class="rd-navbar-aside-center">
                         <div class="rd-navbar-nav-wrap">
@@ -110,6 +110,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <div class="rd-navbar-aside-right">
                         @if(Auth::check())
                             <div class="dropdown">
@@ -144,9 +145,22 @@
         <div class="container container-wide">
             <div class="row row-fix justify-content-sm-center align-items-md-center row-30">
                 <div class="col-md-10 col-lg-7 col-xl-4 text-xl-left">
-                    <a href="index.html">
+                    <a href="{!! route("index") !!}">
                         <img class="inverse-logo"
-                             src="{!! asset('images/logo-inverse-208x46.png') !!}" alt="" width="208" height="46"/></a></div>
+                             src="{!! asset('images/logo-inverse-208x46.png') !!}" alt="" width="208" height="46"/></a>
+                    <ul class="ml-4 group-xs group-middle">
+                        <li>
+                            <a href="{!! route('locale', [ "locale" => 'en' ]) !!}">
+                                <img src="{!! asset('images/source/en.jpg') !!}" width="40" height="20" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{!! route('locale', [ "locale" => 'ru' ]) !!}">
+                                <img src="{!! asset('images/source/ru.png') !!}" width="40" height="20" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="col-md-10 col-lg-7 col-xl-4">
                     <p class="right">&#169;
                         &nbsp;<span class="copyright-year"></span>
@@ -155,13 +169,7 @@
                     </p>
                 </div>
                 <div class="col-md-10 col-lg-7 col-xl-4 text-xl-right">
-                    <ul class="group-xs group-middle">
-                        <li><a class="icon novi-icon icon-md-middle icon-circle icon-secondary-5-filled mdi mdi-facebook" href="#"></a></li>
-                        <li><a class="icon novi-icon icon-md-middle icon-circle icon-secondary-5-filled mdi mdi-twitter" href="#"></a></li>
-                        <li><a class="icon novi-icon icon-md-middle icon-circle icon-secondary-5-filled mdi mdi-instagram" href="#"></a></li>
-                        <li><a class="icon novi-icon icon-md-middle icon-circle icon-secondary-5-filled mdi mdi-google" href="#"></a></li>
-                        <li><a class="icon novi-icon icon-md-middle icon-circle icon-secondary-5-filled mdi mdi-linkedin" href="#"></a></li>
-                    </ul>
+
                 </div>
             </div>
         </div>

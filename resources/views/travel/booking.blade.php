@@ -13,7 +13,7 @@
                     <h3> @lang("Contact Information") </h3>
                     <div class="divider divider-decorate"></div>
 
-                    <form method="POST" action="{{ route('travels.store') }}">
+                    <form id="frmSubmit" method="POST" action="{{ route('travels.store') }}">
                         @csrf
                         <input type="hidden" name="travel_id" value="{!! $travel->id !!}">
                         <input type="hidden" name="price" value="{!! $travel->price !!}">
@@ -34,12 +34,12 @@
                                 "title" => "Phone",
                                 "name" => "phone",
                                 "require" => true,
-                                "value" => Auth::user()->informUser->phone,
+                                "value" => Auth::user()->informUser->phone ?? null,
                             ])
                             @include("components.input_contact", [
                                 "title" => "Address",
                                 "name" => "address",
-                                "value" => Auth::user()->informUser->address,
+                                "value" => Auth::user()->informUser->address ?? null,
                             ])
                         </div>
                         <div class="form-row">
@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label class="d-block text-left" for="exampleFormControlSelect1">Example select</label>
+                                <label class="d-block text-left" for="exampleFormControlSelect1"> @lang("Payment method") </label>
                                 <select style="height: auto !important;"
                                         class="form-control"
                                         id="exampleFormControlSelect1"
@@ -83,13 +83,100 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary"> @lang("Submit") </button>
+                        <button id="btnCheckout" class="btn btn-primary"> @lang("Checkout") </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
     <!-- END - Information -->
+
+    <!-- Large modal (Check out) -->
+    <div
+         id="modalCheckout"
+         class="modal fade bd-example-modal-lg"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header d-block">
+                    <h4 class="modal-title text-center"> @lang("Check out") </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        @include('components.item_checkout_order_show', [
+                            "title" => "Name",
+                            "name" => "name"
+                        ])
+                        @include('components.item_checkout_order_show', [
+                            "title" => "Email",
+                            "name" => "email"
+                        ])
+                        @include('components.item_checkout_order_show', [
+                            "title" => "Phone",
+                            "name" => "phone"
+                        ])
+                        @include('components.item_checkout_order_show', [
+                            "title" => "Address",
+                            "name" => "name"
+                        ])
+
+                        <div class="col-md-12">
+                            <div class="modal-item mb-2">
+                                <h6> @lang("Payment method") </h6>
+                                <p class="m-0 p-payment_method"></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="modal-item mb-2">
+                                <h6> @lang("Note") </h6>
+                                <p class="m-0 p-note"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h6 class="mb-4"> @lang("Tour information") </h6>
+                            <table class="table table-striped">
+                                <thead></thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row"> @lang("Tour name") </th>
+                                    <td> {!! $travel->name !!}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"> @lang("Location") </th>
+                                    <td> {!! $travel->location->name !!}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"> @lang("Time") </th>
+                                    <td> {!! $travel->range_format !!} </td>
+                                <tr>
+                                    <th scope="row"> @lang("Price") </th>
+                                    <td> {!! $travel->price !!} </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"> @lang("Quality") </th>
+                                    <td><p class="p-quality"></p></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"> @lang("Amount") </th>
+                                    <td><p class="p-amount"></p></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnSubmit" type="button" class="btn btn-primary"> @lang("Submit") </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> @lang("Close") </button>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 @section('scripts')
     <script !src="">

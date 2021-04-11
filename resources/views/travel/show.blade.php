@@ -18,7 +18,7 @@
         <div class="container-wide">
             <div class="row row-50">
                 <div class="col-sm-12">
-                    <h3> @lang("Related Tours") </h3>
+                    <h3> @lang("Related tours") </h3>
                     <div class="divider divider-decorate"></div>
                     <!-- Owl Carousel-->
                     <div class="owl-carousel owl-carousel-team owl-carousel-inset"
@@ -46,7 +46,7 @@
         <div class="container-wide">
             <div class="row row-50">
                 <div class="col-sm-12">
-                    <h3> @lang("Recommend Tours") </h3>
+                    <h3> @lang("Recommend tours") </h3>
                     <div class="divider divider-decorate"></div>
                     <!-- Owl Carousel-->
                     <div class="owl-carousel owl-carousel-team owl-carousel-inset"

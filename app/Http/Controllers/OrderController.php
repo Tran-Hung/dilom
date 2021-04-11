@@ -22,7 +22,9 @@ class OrderController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($id) {
-        return view('order.show');
+        $order = Order::findOrFail($id);
+
+        return view('order.show', compact('order'));
     }
 
     /**

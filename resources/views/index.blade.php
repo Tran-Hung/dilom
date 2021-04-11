@@ -79,7 +79,7 @@
                                                    name="name"
                                                    type="text">
                                             <label class="form-label" for="name">
-                                                Tour Name
+                                                @lang("Tour Name")
                                             </label>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@
                                                    type="text"
                                                    data-time-picker="date">
                                             <label class="form-label" for="dateForm">
-                                                Choose the date
+                                                @lang("Choose the date")
                                             </label>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                                    type="text"
                                                    data-time-picker="date">
                                             <label class="form-label" for="dateForm">
-                                                Choose the date
+                                                @lang("Choose the date")
                                             </label>
                                         </div>
                                     </div>
@@ -145,7 +145,7 @@
             <div class="row row-fix justify-content-xl-end row-30 text-center text-xl-left">
                 <div class="col-xl-8">
                     <div class="parallax-text-wrap">
-                        <h3> @lang("Hot tours") </h3><span class="parallax-text"> @lang("Hot tours") </span>
+                        <h3> @lang("Hot Tours") </h3><span class="parallax-text"> @lang("Hot Tours") </span>
                     </div>
                     <hr class="divider divider-decorate">
                 </div>
@@ -240,7 +240,6 @@
                          data-loop="false"
                          data-autoplay="true">
                         @foreach($areaTravels as $travel)
-                            {!! $travel->id !!}
                             <article class="post-blog"><a class="post-blog-image" href="#">
                                     <img src="{!! asset(get_image_from_disk($travel->image, "images/landing-private-airlines-7-570x415.jpg")) !!}"
                                          alt="" width="570" height="415"/>

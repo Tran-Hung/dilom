@@ -9,6 +9,7 @@ use App\Models\Travel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Mockery\Exception;
 
 class TravelController extends Controller
@@ -125,6 +126,10 @@ class TravelController extends Controller
             DB::rollBack();
         }
 
-        return redirect()->back();
+        return redirect()->route('orders.show', [
+            "id" => $order->id,
+        ])->with([
+            "alert-success" => __("Tour booking is successful")
+        ]);
     }
 }

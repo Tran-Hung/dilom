@@ -39,25 +39,20 @@ $(document).ready(function() {
             {
                 data: "id",
                 render: function (data) {
-                    let btnShow = `<button type="button" class="btn mr-2 btn-show"
+                    let btnShow = `<button type="button" class="btn btn-show"
                                         style="background-color: #007bff!important; color: #fff">
                                     <ion-icon name="enter-outline"></ion-icon>
                                  </button>`;
-                    let btnDelete = `<button type="button" class="btn btn-download"
-                                        style="background-color: #17a2b8!important; color: #fff">
-                                    <ion-icon name="download-outline"></ion-icon>
-                                 </button>`;
-
-                    return btnShow + btnDelete;
+                    return btnShow;
                 }
             },
         ],
-        ordering:  [[ 0, 'asc' ]],
         processing: true,
         serverSide: true,
         searching: true,
         lengthChange: false,
         bPaginate: false,
+        ordering: false,
     });
 });
 

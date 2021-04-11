@@ -24,7 +24,7 @@
                                                    type="text"
                                                    value="{!! $name !!}">
                                             <label class="form-label" for="name">
-                                                Tour Name
+                                                @lang("Tour Name")
                                             </label>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                                                    value="{!! $check_in_at !!}"
                                                    data-time-picker="date">
                                             <label class="form-label" for="dateForm">
-                                                Choose the date
+                                                @lang("Choose the date")
                                             </label>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                                    value="{!! $check_out_at !!}"
                                                    data-time-picker="date">
                                             <label class="form-label" for="dateForm">
-                                                Choose the date
+                                                @lang("Choose the date")
                                             </label>
                                         </div>
                                     </div>

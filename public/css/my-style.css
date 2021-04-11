@@ -108,6 +108,17 @@ span.ribbon.bg-3{
     margin: 100px auto;
 }
 
-#modalError .content {
+#modalCheckout .modal-content .modal-item h6 {
+    font-size: 22px;
+    text-transform: capitalize;
+}
+#modalCheckout .modal-content .modal-item p {
+    font-size: 20px;
+}
 
+.alert.alert-success {
+
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+    color: #3c763d;
 }
