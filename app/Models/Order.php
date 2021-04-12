@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $table = "orders";
+    protected $table = "orders"; // connect to "orders" table
     protected $guarded = [];
 
     public function informOrder() {

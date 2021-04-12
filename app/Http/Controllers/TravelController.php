@@ -28,6 +28,7 @@ class TravelController extends Controller
         $check_in_at = $request->check_in_at ?? null;
         $check_out_at = $request->check_out_at ?? null;
 
+        // Get data and search
         $travels = Travel::when($name, function ($q) use($name) {
           $q->where("name", "LIKE", "%". $name ."%");
         })
