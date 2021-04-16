@@ -16,9 +16,7 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Auth::routes([
-    "register" => false
-]);
+Auth::routes();
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, "index"])->name("index");
 
