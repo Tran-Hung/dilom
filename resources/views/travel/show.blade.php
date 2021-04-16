@@ -71,10 +71,13 @@
 @stop
 @section("scripts")
     <script !src="">
+        let bookingUrl = "{!! route("travels.booking", [
+            "id" => $travel->id
+        ]) !!}";
         $("#btnBookNow").on("click", function (e) {
             e.preventDefault();
 
-            window.location.href = '/travels/booking/' + {!! $travel->id !!}
+            window.location.href = bookingUrl;
         });
     </script>
 @stop
