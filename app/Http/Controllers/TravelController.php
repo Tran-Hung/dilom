@@ -21,6 +21,8 @@ class TravelController extends Controller
 
     /**
      * View page find travel
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request) {
         $name = $request->name ?? null;
@@ -33,8 +35,8 @@ class TravelController extends Controller
           $q->where("name", "LIKE", "%". $name ."%");
         })
         ->when($location_id, function ($q) use($location_id) {
-                $q->whereHas('location', function ($q) {
-                    $q->where('area_type', AREA_SOUTH);
+                $q->whereHas('location', function ($q) use($location_id) {
+                    $q->where('location_id', $location_id);
                 });
             })
         ->when($check_in_at, function ($q) use($check_in_at) {
