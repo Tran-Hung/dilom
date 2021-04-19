@@ -2,7 +2,7 @@
 <html class="wide wow-animation" lang="en">
 <head>
     <!-- Site Title-->
-    <title>Home</title>
+    <title>Travel</title>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,7 +97,7 @@
                         <!-- RD Navbar Toggle-->
                         <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                         <!-- RD Navbar Brand-->
-                        <div class="rd-navbar-brand"><a class="brand-name" href="{!! route("index") !!}"><img class="logo-default" src="{!! asset('images/logo-default-208x46.png') !!}" alt="" width="208" height="46"/><img class="logo-inverse" src="images/logo-inverse-208x46.png" alt="" width="208" height="46"/></a></div>
+                        <div class="rd-navbar-brand"><a class="brand-name" href="{!! route("index") !!}"><img class="logo-default" src="{!! asset('images/logo-travel.jpg') !!}" alt="" width="208" height="46"/><img class="logo-inverse" src="images/logo-inverse-208x46.png" alt="" width="208" height="46"/></a></div>
                     </div>
                     <div class="rd-navbar-aside-center">
                         <div class="rd-navbar-nav-wrap">
@@ -147,7 +147,7 @@
                 <div class="col-md-10 col-lg-7 col-xl-4 text-xl-left">
                     <a href="{!! route("index") !!}">
                         <img class="inverse-logo"
-                             src="{!! asset('images/logo-inverse-208x46.png') !!}" alt="" width="208" height="46"/></a>
+                             src="{!! asset('images/logo-travel-removebg.png') !!}" alt="" width="208" height="46"/></a>
                     <ul class="ml-4 group-xs group-middle">
                         <li>
                             <a href="{!! route('locale', [ "locale" => 'en' ]) !!}">

@@ -58,5 +58,5 @@
             show: "@lang("Show")"
         };
     </script>
-    <script src="{!! asset("js/pages/order_index.js") !!}"></script>
+    <script src="{!! asset("js/pages/order_index.js") !!}"> </script>
 @stop

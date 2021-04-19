@@ -69,7 +69,7 @@
                         <div class="form-request form-request-modern bg-gray-lighter novi-background">
                             <h4> @lang('Find your Tour') </h4>
                             <!-- RD Mailform-->
-                            <form id="frmSearch" class="form-fix" action="{!! route("travels") !!}">
+                            <form id="frmSearch" class="form-fix" action="{!! route("search") !!}">
                                 <div class="row row-20 row-fix">
                                     <div class="col-sm-12">
                                         <label class="form-label-outside">@lang('Tour Name') </label>
@@ -150,7 +150,7 @@
                     <hr class="divider divider-decorate">
                 </div>
                 <div class="col-xl-3 text-xl-right">
-                    <a class="button button-secondary button-nina" href="#"> @lang("All tours") </a>
+                    <a class="button button-secondary button-nina" href="{!! route("travels") !!}"> @lang("All tours") </a>
                 </div>
             </div>
             <div class="row row-50">
@@ -181,7 +181,66 @@
                          data-dots="true"
                          data-autoplay="true">
                         @foreach($latestTravels as $travel)
-                            <article class="post-blog"><a class="post-blog-image" href="#">
+                            <article class="post-blog"><a class="post-blog-image" href="{!! route("travels.show", ["id" => $travel->id]) !!}">
+                                    <img src="{!! asset(get_image_from_disk($travel->image, "images/landing-private-airlines-7-570x415.jpg")) !!}"
+                                         alt="" width="570" height="370"/>
+                                </a>
+                                <div class="post-blog-caption">
+                                    <div class="post-blog-caption-header">
+                                        <ul class="post-blog-tags">
+                                            <li>
+                                                <a class="button-tags" href="#">
+                                                    {!! $travel->location->name !!}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="post-blog-meta">
+                                            <li>
+                                                Limit {!! $travel->limit_user !!}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="post-blog-caption-body">
+                                        <h5><a class="post-blog-title" href="{!! route("travels.show", ["id" => $travel->id]) !!}"> {!! $travel->name !!} </a></h5>
+                                    </div>
+                                    <div class="post-blog-caption-footer">
+                                        <span class="check_in">
+                                            Check In: {!! $travel->check_in_at !!}
+                                        </span>
+                                        <span class="check_out text-right">
+                                            Check Out: {!! $travel->check_out_at !!}
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END - Latest tours -->
+    
+    <!-- Northern Tours (Tours by area) -->
+    <section class="section section-lg novi-background bg-cover bg-default text-center">
+        <div class="container-wide">
+            <div class="row row-50">
+                <div class="col-sm-12">
+                    <h3> @lang("Northern Tours") </h3>
+                    <div class="divider divider-decorate"></div>
+                    <!-- Owl Carousel-->
+                    <div class="owl-carousel owl-carousel-team owl-carousel-inset"
+                         data-items="1"
+                         data-md-items="2"
+                         data-xl-items="3"
+                         data-stage-padding="15"
+                         data-margin="30"
+                         data-mouse-drag="false"
+                         data-dots="true"
+                         data-loop="false"
+                         data-autoplay="true">index
+                        @foreach($northernTravels as $travel)
+                            <article class="post-blog"><a class="post-blog-image" href="{!! route("travels.show", ["id" => $travel->id]) !!}">
                                     <img src="{!! asset(get_image_from_disk($travel->image, "images/landing-private-airlines-7-570x415.jpg")) !!}"
                                          alt="" width="570" height="415"/>
                                 </a>
@@ -201,7 +260,7 @@
                                         </ul>
                                     </div>
                                     <div class="post-blog-caption-body">
-                                        <h5><a class="post-blog-title" href="#"> {!! $travel->name !!} </a></h5>
+                                        <h5><a class="post-blog-title" href="{!! route("travels.show", ["id" => $travel->id]) !!}"> {!! $travel->name !!} </a></h5>
                                     </div>
                                     <div class="post-blog-caption-footer">
                                         <span class="check_in">
@@ -219,7 +278,66 @@
             </div>
         </div>
     </section>
-    <!-- END - Latest tours -->
+    <!-- END - Northern Tours (Tours by area) -->
+
+    <!-- Central Tours (Tours by area) -->
+    <section class="section section-lg novi-background bg-cover bg-default text-center">
+        <div class="container-wide">
+            <div class="row row-50">
+                <div class="col-sm-12">
+                    <h3> @lang("Central Tours") </h3>
+                    <div class="divider divider-decorate"></div>
+                    <!-- Owl Carousel-->
+                    <div class="owl-carousel owl-carousel-team owl-carousel-inset"
+                         data-items="1"
+                         data-md-items="2"
+                         data-xl-items="3"
+                         data-stage-padding="15"
+                         data-margin="30"
+                         data-mouse-drag="false"
+                         data-dots="true"
+                         data-loop="false"
+                         data-autoplay="true">index
+                        @foreach($centralTravels as $travel)
+                            <article class="post-blog"><a class="post-blog-image" href="{!! route("travels.show", ["id" => $travel->id]) !!}">
+                                    <img src="{!! asset(get_image_from_disk($travel->image, "images/landing-private-airlines-7-570x415.jpg")) !!}"
+                                         alt="" width="570" height="415"/>
+                                </a>
+                                <div class="post-blog-caption">
+                                    <div class="post-blog-caption-header">
+                                        <ul class="post-blog-tags">
+                                            <li>
+                                                <a class="button-tags" href="#">
+                                                    {!! $travel->location->name !!}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="post-blog-meta">
+                                            <li>
+                                                Limit {!! $travel->limit_user !!}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="post-blog-caption-body">
+                                        <h5><a class="post-blog-title" href="{!! route("travels.show", ["id" => $travel->id]) !!}"> {!! $travel->name !!} </a></h5>
+                                    </div>
+                                    <div class="post-blog-caption-footer">
+                                        <span class="check_in">
+                                            Check In: {!! $travel->check_in_at !!}
+                                        </span>
+                                        <span class="check_out text-right">
+                                            Check Out: {!! $travel->check_out_at !!}
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END - Central Tours (Tours by area) -->
 
     <!-- South tours (Tours by area) -->
     <section class="section section-lg novi-background bg-cover bg-default text-center">
@@ -239,10 +357,10 @@
                          data-dots="true"
                          data-loop="false"
                          data-autoplay="true">index
-                        @foreach($areaTravels as $travel)
-                            <article class="post-blog"><a class="post-blog-image" href="#">
+                        @foreach($southTravels as $travel)
+                            <article class="post-blog"><a class="post-blog-image" href="{!! route("travels.show", ["id" => $travel->id]) !!}">
                                     <img src="{!! asset(get_image_from_disk($travel->image, "images/landing-private-airlines-7-570x415.jpg")) !!}"
-                                         alt="" width="570" height="415"/>
+                                         alt="" width="570" height="370"/>
                                 </a>
                                 <div class="post-blog-caption">
                                     <div class="post-blog-caption-header">
@@ -260,7 +378,7 @@
                                         </ul>
                                     </div>
                                     <div class="post-blog-caption-body">
-                                        <h5><a class="post-blog-title" href="#"> {!! $travel->name !!} </a></h5>
+                                        <h5><a class="post-blog-title" href="{!! route("travels.show", ["id" => $travel->id]) !!}"> {!! $travel->name !!} </a></h5>
                                     </div>
                                     <div class="post-blog-caption-footer">
                                         <span class="check_in">
@@ -279,6 +397,7 @@
         </div>
     </section>
     <!-- END - South tours (Tours by area) -->
+
 @stop
 
 @section("scripts")

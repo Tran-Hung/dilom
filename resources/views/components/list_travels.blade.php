@@ -28,7 +28,7 @@
             </div>
             <div class="event-default-inner">
                 <h5>
-                    <a class="event-default-title" href="#">
+                    <a class="event-default-title" href="{!! route("travels.show", ["id" => $travel->id]) !!}">
                         {!! $travel->name !!}
                     </a>
                 </h5>

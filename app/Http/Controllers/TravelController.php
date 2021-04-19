@@ -33,8 +33,8 @@ class TravelController extends Controller
           $q->where("name", "LIKE", "%". $name ."%");
         })
         ->when($location_id, function ($q) use($location_id) {
-                $q->whereHas('location', function ($q) {
-                    $q->where('area_type', AREA_SOUTH);
+                $q->whereHas('location', function ($q) use($location_id) {
+                    $q->where('location_id', $location_id);
                 });
             })
         ->when($check_in_at, function ($q) use($check_in_at) {
@@ -45,13 +45,32 @@ class TravelController extends Controller
         })
         ->orderBy('id', 'desc')
         ->paginate(20);
+        $southTravels = Travel::whereHas('location', function ($q) {
+                $q->where('area_type', AREA_SOUTH);
+            })
+            ->orderBy('id', 'desc')
+            ->get();
+        $northernTravels = Travel::whereHas('location', function ($q) {
+                $q->where('area_type', AREA_NORTHERN);
+            })
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $centralTravels = Travel::whereHas('location', function ($q) {
+                $q->where('area_type', AREA_CENTRAL);
+            })
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view("travel.index", compact(
             'travels',
             'name',
             'location_id',
             'check_in_at',
-            'check_out_at'));
+            'check_out_at',
+            'southTravels', 
+            'northernTravels', 
+            'centralTravels'));
     }
 
     /**
@@ -90,6 +109,7 @@ class TravelController extends Controller
 
     /**
      * Store newly order to database
+
      * @param CreateTravelRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */

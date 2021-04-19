@@ -32,6 +32,13 @@ Route::group([
 
 });
 
+Route::group([
+    'prefix' => 'search',
+], function () {
+    Route::get('/', [\App\Http\Controllers\SearchController::class, "index"])->name('search');
+
+});
+
 // Orders
 Route::group([
     'prefix' => 'orders',

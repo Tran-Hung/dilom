@@ -29,6 +29,7 @@
     "Related tours": "Связанные туры",
     "Recommend tours": "Рекомендовать туры",
     "Login": "Авторизоваться",
+    "Register": "Регистрация",
     "Logout": "выйти",
     "Contact Information": "Контакты",
     "Email": "Электронное письмо",
@@ -71,6 +72,8 @@
     "Our team is ready to provide you with unique weekly travel insights that include photos, videos, and articles about untravelled tourist paths. We know everything about the places you’ve never been to!": "Наша команда готова еженедельно предоставлять вам уникальную информацию о путешествиях, включая фотографии, видео и статьи о неизведанных туристических маршрутах. Мы знаем все о местах, в которых вы никогда не были!",
     "E-Mail Address": "Адрес электронной почты",
     "Password": "Пароль",
-    "Remember Me": "Запомни меня"
+    "Remember Me": "Запомни меня",
+    "Northern Tours" : "Северные туры",
+    "Central Tours" : "Центральные туры"
 }
 

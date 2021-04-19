@@ -18,13 +18,25 @@ class HomeController extends Controller
 
         $hotTravels = Travel::take($take)->orderBy('limit_user', 'desc')->get();
         $latestTravels = Travel::take($take)->orderBy('id', 'desc')->get();
-        $areaTravels = Travel::whereHas('location', function ($q) {
+        $southTravels = Travel::whereHas('location', function ($q) {
                 $q->where('area_type', AREA_SOUTH);
             })
             ->take($take)
             ->orderBy('id', 'desc')
             ->get();
+        $northernTravels = Travel::whereHas('location', function ($q) {
+                $q->where('area_type', AREA_NORTHERN);
+            })
+            ->take($take)
+            ->orderBy('id', 'desc')
+            ->get();
 
-        return view('index', compact('hotTravels', 'latestTravels', 'areaTravels'));
+        $centralTravels = Travel::whereHas('location', function ($q) {
+                $q->where('area_type', AREA_CENTRAL);
+            })
+            ->take($take)
+            ->orderBy('id', 'desc')
+            ->get();
+        return view('index', compact('hotTravels', 'latestTravels', 'southTravels', 'northernTravels', 'centralTravels'));
     }
 }
