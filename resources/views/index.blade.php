@@ -238,7 +238,7 @@
                          data-mouse-drag="false"
                          data-dots="true"
                          data-loop="false"
-                         data-autoplay="true">index
+                         data-autoplay="true">
                         @foreach($areaTravels as $travel)
                             <article class="post-blog"><a class="post-blog-image" href="#">
                                     <img src="{!! asset(get_image_from_disk($travel->image, "images/landing-private-airlines-7-570x415.jpg")) !!}"

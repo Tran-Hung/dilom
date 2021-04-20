@@ -50,7 +50,8 @@
 @section("scripts")
     <script>
         let url = {
-            data: "{!! route('orders.data') !!}"
+            data: "{!! route('orders.data') !!}",
+            index: "{!! route('orders') !!}",
         };
 
         let trans = {
