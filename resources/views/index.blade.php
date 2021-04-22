@@ -356,7 +356,7 @@
                          data-mouse-drag="false"
                          data-dots="true"
                          data-loop="false"
-                         data-autoplay="true">index
+                         data-autoplay="true">
                         @foreach($southTravels as $travel)
                             <article class="post-blog"><a class="post-blog-image" href="{!! route("travels.show", ["id" => $travel->id]) !!}">
                                     <img src="{!! asset(get_image_from_disk($travel->image, "images/landing-private-airlines-7-570x415.jpg")) !!}"
