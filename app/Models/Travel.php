@@ -19,7 +19,7 @@ class Travel extends Model
         return format_money($value);
     }
     public function setPriceAttribute($value) {
-        return replace_char(',', '', $value);
+        $this->attributes['price'] = replace_char(',', '', $value);
     }
     public function getRangeDaysAttribute() {
         $range = Carbon::parse($this->check_in_at)->diffInDays(Carbon::parse($this->check_out_at));

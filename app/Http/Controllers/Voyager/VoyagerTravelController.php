@@ -107,7 +107,6 @@ class VoyagerTravelController extends BaseVoyagerUserController
 
             DB::commit();
         } catch (\Exception $e) {
-            dd($e->getMessage());
             DB::rollBack();
         }
 

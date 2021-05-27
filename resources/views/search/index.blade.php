@@ -31,7 +31,7 @@
                                     <div class="col-sm-12">
                                         <label class="form-label-outside">@lang('Location') </label>
                                         <div class="form-wrap form-wrap-inline">
-                                            <select class="form-input select-filter"
+                                            <select class="form-input select-filter2"
                                                     data-placeholder="All"
                                                     data-minimum-results-for-search="Infinity"
                                                     name="location">

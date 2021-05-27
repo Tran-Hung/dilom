@@ -60,5 +60,5 @@ $("#table_orders").on("click", ".btn-show", function () {
     let row = $(this).closest('tr');
     let id = table_orders.row(row).data().id;
 
-    window.location.href = url.index + id;
+    window.location.href = url.index + "/" +id;
 });

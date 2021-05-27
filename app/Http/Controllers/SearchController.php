@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTravelRequest;
-use App\Models\InformOrder;
-use App\Models\Order;
+use App\Models\Location;
 use App\Models\Travel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +13,6 @@ use Mockery\Exception;
 
 class SearchController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->only(['booking']);
-    }
 
     /**
      * View page find travel
@@ -27,7 +22,7 @@ class SearchController extends Controller
         $location_id = $request->location ?? 0;
         $check_in_at = $request->check_in_at ?? null;
         $check_out_at = $request->check_out_at ?? null;
-
+        
         // Get data and search
         $travels = Travel::when($name, function ($q) use($name) {
           $q->where("name", "LIKE", "%". $name ."%");
