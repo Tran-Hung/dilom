@@ -18,6 +18,9 @@ class AppServiceProvider extends ServiceProvider
     {
         // Voyager::useModel('User', User::class);
         Schema::defaultstringLength(191);
+        if ( $ this -> app -> environment ()! == 'production' ) {
+             $ this -> app -> register ( IdeHelperServiceProvider :: class); 
+        } 
     }
 
     /**

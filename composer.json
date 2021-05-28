@@ -57,7 +57,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [" barryvdh / laravel-Ide-helper " ]
         }
     },
     "config": {
