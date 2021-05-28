@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3",
+        "php": "^7.0|^7.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -57,7 +57,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [" barryvdh / laravel-Ide-helper " ]
+            "dont-discover": []
         }
     },
     "config": {
